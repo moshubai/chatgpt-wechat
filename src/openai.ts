@@ -1,3 +1,4 @@
+import fs from "fs";
 import {
   Configuration,
   CreateImageRequestResponseFormatEnum,
@@ -5,7 +6,6 @@ import {
   OpenAIApi
 } from "openai";
 import DBUtils from "./data.js";
-import fs from "fs";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -29,7 +29,7 @@ async function chatgpt(username:string,message: string): Promise<string> {
   if (response) {
     return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, "");
   } else {
-    return "Something went wrong"
+    return "不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ"
   }
 }
 
@@ -69,4 +69,4 @@ async function whisper(username:string,videoPath: string): Promise<string> {
   }
 }
 
-export {chatgpt,dalle,whisper};
+export { chatgpt, dalle, whisper };
