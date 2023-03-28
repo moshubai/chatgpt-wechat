@@ -24,7 +24,7 @@ async function chatgpt(username:string,message: string): Promise<string> {
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
-    temperature: 0.6
+    temperature: 1.0
   }).then((res) => res.data).catch((err) => console.log(err));
   if (response) {
     return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, "");

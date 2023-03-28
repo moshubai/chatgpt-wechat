@@ -40,7 +40,8 @@ export class ChatGPTBot {
     this.botName = botName;
   }
   get chatGroupTriggerRegEx(): RegExp {
-    return new RegExp(`^@${regexpEncode(this.botName)}\\s`);
+    // return new RegExp(`^@${regexpEncode(this.botName)}\\s`);
+    return new RegExp(`@${this.botName}`);
   }
   // 私聊出发规则
   get chatPrivateTriggerRule(): RegExp | undefined {
@@ -170,15 +171,17 @@ export class ChatGPTBot {
       const regEx = this.chatPrivateTriggerRule
       triggered = regEx? regEx.test(text): true;
     } else {
+      // 群聊触发
       triggered = this.chatGroupTriggerRegEx.test(text);
       // group message support `chatTriggerRule`
+      console.log('triggered',triggered,chatTriggerRule);
       if (triggered && chatTriggerRule) {
         triggered = chatTriggerRule.test(text.replace(this.chatGroupTriggerRegEx, ""))
       }
     }
-    if (triggered) {
-      console.log(`🎯 Triggered ChatGPT: ${text}`);
-    }
+    // if (triggered) {
+    //   console.log(`🎯 Triggered ChatGPT: ${text}`);
+    // }
     return triggered;
   }
   // Check whether the message contains the blocked words. if so, the message will be ignored. if so, return true
@@ -223,7 +226,7 @@ export class ChatGPTBot {
     room: RoomInterface
   ) {
     const gptMessage = await this.getGPTMessage(await room.topic(),text);
-    const result = `@${talker.name()} \n ${gptMessage}`;
+    const result = `@${talker.name()} \n${gptMessage}`;
     // const result = `@${talker.name()} ${text}\n\n------\n ${gptMessage}`;
     await this.trySay(room, result);
   }
