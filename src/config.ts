@@ -17,6 +17,6 @@ export const config: IConfig = {
   // 连天敏感词
   chatgptBlockWords: process.env.CHATGPT_BLOCK_WORDS?.split(",") || [],
   // 一条消息的字数
-  singleMessageMaxSize: process.env.SINGLE_MESSAGE_MAX_SIZE || 5000
+  singleMessageMaxSize: Number(process.env.SINGLE_MESSAGE_MAX_SIZE) || 5000
 };
 
