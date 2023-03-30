@@ -11,7 +11,7 @@ export const config: IConfig = {
   chatTriggerRule: process.env.CHAT_TRIGGER_RULE || "",
   // 禁止群聊使用机器人
   disableGroupMessage: process.env.DISABLE_GROUP_MESSAGE === "true",
-  temperature: process.env.TEMPERATURE ? parseFloat(process.env.TEMPERATURE) : 0.2,
+  temperature: process.env.TEMPERATURE ? parseFloat(process.env.TEMPERATURE) : 1.0,
   // 避免敏感词
   blockWords: process.env.BLOCK_WORDS?.split(",") || [],
   // 连天敏感词

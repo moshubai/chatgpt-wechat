@@ -5,6 +5,7 @@ import {
   CreateImageRequestSizeEnum,
   OpenAIApi
 } from "openai";
+import { config } from "./config.js";
 import DBUtils from "./data.js";
 
 const configuration = new Configuration({
@@ -24,10 +25,14 @@ async function chatgpt(username:string,message: string): Promise<string> {
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
-    temperature: 1.0
+    temperature: config.temperature
   }).then((res) => res.data).catch((err) => console.log(err));
   if (response) {
+    if(messages && messages.length > 15){
+      DBUtils.clearHistory(username);
+    }
     return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, "");
+
   } else {
     return "不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ"
   }
