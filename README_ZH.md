@@ -20,32 +20,34 @@
 ## 🌟 功能点
 
 - 使用 WeChat 和 ChatGPT 进行互动：
-   - 基于 [wechaty](https://github.com/wechaty/wechaty) 和 [Official API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis) 在微信中使用 ChatGPT
-   - 支持多轮对话
-   - 支持[命令](#-命令)设置
+
+  - 基于 [wechaty](https://github.com/wechaty/wechaty) 和 [Official API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis) 在微信中使用 ChatGPT
+  - 支持多轮对话
+  - 支持[命令](#-命令)设置
 
 - 部署和配置选项：
-   - 提供 Dockerfile，可以通过 [docker](#通过docker使用) 进行部署
-   - 支持使用 [docker compose](#通过docker-compose使用) 进行部署
-   - 支持在 [Railway](#使用railway进行部署) 和 [Fly.io](#通过flyio进行部署) 上部署
+
+  - 提供 Dockerfile，可以通过 [docker](#通过docker使用) 进行部署
+  - 支持使用 [docker compose](#通过docker-compose使用) 进行部署
+  - 支持在 [Railway](#使用railway进行部署) 和 [Fly.io](#通过flyio进行部署) 上部署
 
 - 其他功能：
-   - 支持 [Dall·E](https://labs.openai.com/)
-   - 支持 [whisper](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
-   - 支持设置 prompt
-   - 支持代理（开发中）
+  - 支持 [Dall·E](https://labs.openai.com/)
+  - 支持 [whisper](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
+  - 支持设置 prompt
+  - 支持代理（开发中）
 
 ## 🚀 使用
 
-- [在 Railway 部署](#使用railway进行部署)(PaaS, 免费, 稳定, ✅推荐)
-- [在 Fly.io 部署](#通过flyio进行部署)(PaaS, 免费, ✅推荐)
-- [使用 Docker 部署](#通过docker使用)(自托管, 稳定, ✅推荐)
-- [使用 Docker Compose 部署](#通过docker-compose使用)(自托管, 稳定, ✅推荐)
+- [在 Railway 部署](#使用railway进行部署)(PaaS, 免费, 稳定, ✅ 推荐)
+- [在 Fly.io 部署](#通过flyio进行部署)(PaaS, 免费, ✅ 推荐)
+- [使用 Docker 部署](#通过docker使用)(自托管, 稳定, ✅ 推荐)
+- [使用 Docker Compose 部署](#通过docker-compose使用)(自托管, 稳定, ✅ 推荐)
 - [使用 NodeJS 部署](#使用nodejs运行)
 
-## 使用Railway进行部署
+## 使用 Railway 进行部署
 
-> Railway 是一个免费的 PaaS 平台，5刀以内的账单免费或者每个月500小时的运行时间
+> Railway 是一个免费的 PaaS 平台，5 刀以内的账单免费或者每个月 500 小时的运行时间
 
 1. 点击 [Railway](https://railway.app/template/dMLG70?referralCode=bIYugQ) 按钮，进入 Railway 部署页面
 2. 点击 `Deploy Now` 按钮，进入 Railway 部署页面
@@ -53,11 +55,11 @@
 4. 点击 `Deploy` 按钮
 5. 点击 `View Logs` 按钮，等待部署完成
 
-## 通过Fly.io进行部署
+## 通过 Fly.io 进行部署
 
 > 请为应用程序分配 512 MB 内存，否则可能会出现内存溢出
 
-> Fly.io 5刀以内的账单免费(免费计划的3个256MB的应用不在账单内)也就是可以同时可以部署 `1*512MB + 3*256MB`
+> Fly.io 5 刀以内的账单免费(免费计划的 3 个 256MB 的应用不在账单内)也就是可以同时可以部署 `1*512MB + 3*256MB`
 
 1. 安装 [flyctl](https://fly.io/docs/getting-started/installing-flyctl/)
    ```shell
@@ -74,7 +76,7 @@
    ```
 3. 创建应用
    ```shell
-   ➜ flyctl launch 
+   ➜ flyctl launch
     ? Would you like to copy its configuration to the new app? No
     ? App Name (leave blank to use an auto-generated name): <YOUR APP NAME>
     ? Select region: <YOUR CHOOSE REGION>
@@ -90,7 +92,7 @@
    flyctl deploy
    ```
 
-## 通过Docker使用
+## 通过 Docker 使用
 
 ```sh
 # 拉取镜像
@@ -108,7 +110,7 @@ docker logs -f wechat-chatgpt
 
 > 如何获取 OPENAI API KEY？请参考 [OpenAI API](https://platform.openai.com/account/api-keys)。
 
-## 通过docker compose使用
+## 通过 docker compose 使用
 
 ```sh
 # 根据模板拷贝配置文件
@@ -121,9 +123,9 @@ docker compose up -d
 docker logs -f wechat-chatgpt
 ```
 
-## 使用NodeJS运行
+## 使用 NodeJS 运行
 
-> 请确认安装的NodeJS版本为18.0.0以上
+> 请确认安装的 NodeJS 版本为 18.0.0 以上
 
 ```sh
 # 克隆项目
@@ -142,20 +144,22 @@ npm run dev
 
 ## 📝 Environment Variables
 
-| name                         | default                | example                                        | description                                                 |
-|------------------------------|------------------------|------------------------------------------------|-------------------------------------------------------------|
-| ~~API~~                      | https://api.openai.com |                                                | ~~ChatGPT API 地址~~                                          |
-| OPENAI_API_KEY               | 123456789              | sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX | [创建你的 API 密钥](https://platform.openai.com/account/api-keys) |
-| MODEL                        | gpt-3.5-turbo          |                                                | 要使用的模型ID, 目前仅支持`gpt-3.5-turbo` 和 `gpt-3.5-turbo-0301`       |
-| TEMPERATURE                  | 0.6                    |                                                | 在0和2之间。较高的数值如0.8会使 ChatGPT 输出更加随机，而较低的数值如0.2会使其更加稳定。        |
-| CHAT_TRIGGER_RULE            |                        |                                                | 私聊触发规则                                                      |
-| DISABLE_GROUP_MESSAGE        | true                   |                                                | 禁用在群聊里使用ChatGPT                                             |
-| CHAT_PRIVATE_TRIGGER_KEYWORD |                        |                                                | 在私聊中触发ChatGPT的关键词, 默认是无需关键词即可触发                             |
-| BLOCK_WORDS                  | "VPN"                  | "WORD1,WORD2,WORD3"                            | 聊天屏蔽关键词(同时在群组和私聊中生效, 避免 bot 用户恶意提问导致封号                      |
-| CHATGPT_BLOCK_WORDS          | "VPN"                  | "WORD1,WORD2,WORD3"                            | ChatGPT回复屏蔽词, 如果ChatGPT的回复中包含了屏蔽词, 则不回复                     |
+| name                         | default                | example                                        | description                                                                                     |
+| ---------------------------- | ---------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| ~~API~~                      | https://api.openai.com |                                                | ~~ChatGPT API 地址~~                                                                            |
+| OPENAI_API_KEY               | 123456789              | sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX | [创建你的 API 密钥](https://platform.openai.com/account/api-keys)                               |
+| MODEL                        | gpt-3.5-turbo          |                                                | 要使用的模型 ID, 目前仅支持`gpt-3.5-turbo` 和 `gpt-3.5-turbo-0301`                              |
+| TEMPERATURE                  | 0.6                    |                                                | 在 0 和 2 之间。较高的数值如 0.8 会使 ChatGPT 输出更加随机，而较低的数值如 0.2 会使其更加稳定。 |
+| CHAT_TRIGGER_RULE            |                        |                                                | 私聊触发规则                                                                                    |
+| DISABLE_GROUP_MESSAGE        | true                   |                                                | 禁用在群聊里使用 ChatGPT                                                                        |
+| CHAT_PRIVATE_TRIGGER_KEYWORD |                        |                                                | 在私聊中触发 ChatGPT 的关键词, 默认是无需关键词即可触发                                         |
+| BLOCK_WORDS                  | "VPN"                  | "WORD1,WORD2,WORD3"                            | 聊天屏蔽关键词(同时在群组和私聊中生效, 避免 bot 用户恶意提问导致封号                            |
+| CHATGPT_BLOCK_WORDS          | "VPN"                  | "WORD1,WORD2,WORD3"                            | ChatGPT 回复屏蔽词, 如果 ChatGPT 的回复中包含了屏蔽词, 则不回复                                 |
 
-## 📝 使用自定义ChatGPT API
+## 📝 使用自定义 ChatGPT API
+
 > https://github.com/fuergaosi233/openai-proxy
+
 ```shell
 # 克隆项目
 git clone https://github.com/fuergaosi233/openai-proxy
@@ -171,7 +175,9 @@ routes = [
 ```
 
 ## ⌨️ 命令
+
 > 在微信聊天框中输入
+
 ```shell
 /cmd help # 显示帮助信息
 /cmd prompt <PROMPT> # 设置ChatGPT Prompt

@@ -21,22 +21,25 @@
 ## 🌟 Features
 
 - Interact with WeChat and ChatGPT:
-   - Use ChatGPT on WeChat with [wechaty](https://github.com/wechaty/wechaty) and [Official API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
-   - Add conversation support
-   - Support command setting
+
+  - Use ChatGPT on WeChat with [wechaty](https://github.com/wechaty/wechaty) and [Official API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
+  - Add conversation support
+  - Support command setting
 
 - Deployment and configuration options:
-   - Add Dockerfile, deployable with [docker](#use-with-docker)
-   - Support deployment using [docker compose](#use-with-docker-compose)
-   - Support [Railway](#use-with-railway) and [Fly.io](#use-with-flyio) deployment
+
+  - Add Dockerfile, deployable with [docker](#use-with-docker)
+  - Support deployment using [docker compose](#use-with-docker-compose)
+  - Support [Railway](#use-with-railway) and [Fly.io](#use-with-flyio) deployment
 
 - Other features:
-   - Support [Dall·E](https://labs.openai.com/)
-   - Support [whisper](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
-   - Support setting prompt
-   - Support proxy (in development)
+  - Support [Dall·E](https://labs.openai.com/)
+  - Support [whisper](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
+  - Support setting prompt
+  - Support proxy (in development)
 
 ## 🚀 Usage
+
 - [Use with Railway](#use-with-railway)(PaaS, Free, Stable, ✅Recommended)
 - [Use with Fly.io](#use-with-flyio)(Paas, Free, ✅Recommended)
 - [Use with docker](#use-with-docker)(Self-hosted, Stable, ✅Recommended)
@@ -44,7 +47,9 @@
 - [Use with nodejs](#use-with-nodejs)(Self-hosted)
 
 ## Use with Railway
+
 > Railway offers $5 or 500 hours of runtime per month
+
 1. Click the [Railway](https://railway.app/template/dMLG70?referralCode=bIYugQ) button to go to the Railway deployment page
 2. Click the `Deploy Now` button to enter the Railway deployment page
 3. Fill in the repository name and `OPENAI_API_KEY` (need to link GitHub account)
@@ -52,9 +57,11 @@
 5. Click the `View Logs` button and wait for the deployment to complete
 
 ## Use with Fly.io
+
 > Please allocate 512MB memory for the application to meet the application requirements
 
 > fly.io offers free bills up to $5(Free Allowances 3 256MB are not included in the bill)
+
 1. Install [flyctl](https://fly.io/docs/getting-started/installing-flyctl/)
    ```shell
     # macOS
@@ -70,7 +77,7 @@
    ```
 3. Create a new app
    ```shell
-   ➜ flyctl launch 
+   ➜ flyctl launch
     ? Would you like to copy its configuration to the new app? No
     ? App Name (leave blank to use an auto-generated name): <YOUR APP NAME>
     ? Select region: <YOUR CHOOSE REGION>
@@ -101,6 +108,7 @@ docker run -d --name wechat-chatgpt \
 # View the QR code to log in to wechat
 docker logs -f wechat-chatgpt
 ```
+
 > How to get OPENAI API KEY? [Click here](https://platform.openai.com/account/api-keys)
 
 ## Use with docker compose
@@ -138,7 +146,7 @@ npm run dev
 ## 📝 Environment Variables
 
 | name                         | default                | example                                        | description                                                                                                                                                                          |
-|------------------------------|------------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------- | ---------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ~~API~~                      | https://api.openai.com |                                                | ~~API endpoint of ChatGPT~~                                                                                                                                                          |
 | OPENAI_API_KEY               | 123456789              | sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX | [create new secret key](https://platform.openai.com/account/api-keys)                                                                                                                |
 | MODEL                        | gpt-3.5-turbo          |                                                | ID of the model to use. Currently, only gpt-3.5-turbo and gpt-3.5-turbo-0301 are supported.                                                                                          |
@@ -168,7 +176,9 @@ routes = [
 ```
 
 ## ⌨️ Commands
+
 > Enter in the WeChat chat box
+
 ```shell
 /cmd help # Show help
 /cmd prompt <PROMPT> # Set prompt
