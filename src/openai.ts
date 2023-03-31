@@ -18,19 +18,19 @@ const openai = new OpenAIApi(configuration)
  * @param username
  * @param message
  */
-async function againWakeGpt(message: any[]) {
-  const response = await openai
-    .createChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages: message,
-      temperature: config.temperature
-    })
-    .then(res => res.data)
-    .catch(err => console.log(err))
-  if (response) {
-    return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, '')
-  }
-}
+// async function againWakeGpt(message: any[]) {
+//   const response = await openai
+//     .createChatCompletion({
+//       model: 'gpt-3.5-turbo',
+//       messages: message,
+//       temperature: config.temperature
+//     })
+//     .then(res => res.data)
+//     .catch(err => console.log(err))
+//   if (response) {
+//     return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, '')
+//   }
+// }
 
 /**
  * Get completion from OpenAI
@@ -56,12 +56,7 @@ async function chatgpt(username: string, message: string) {
     }
     return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, '')
   } else {
-    let info = await againWakeGpt(messages[messages.length - 1])
-    if (info) {
-      return info
-    } else {
-      return '不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ'
-    }
+    return '不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ'
   }
 }
 
