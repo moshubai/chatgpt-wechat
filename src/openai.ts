@@ -63,7 +63,9 @@ async function chatgpt(username: string, message: string) {
       } else {
         return '不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ'
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
