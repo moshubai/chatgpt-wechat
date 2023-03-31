@@ -56,15 +56,11 @@ async function chatgpt(username: string, message: string) {
     }
     return (response.choices[0].message as any).content.replace(/^\n+|\n+$/g, '')
   } else {
-    try {
-      let info = await againWakeGpt(messages[messages.length - 1])
-      if (info) {
-        return info
-      } else {
-        return '不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ'
-      }
-    } catch (error) {
-      console.log(error)
+    let info = await againWakeGpt(messages[messages.length - 1])
+    if (info) {
+      return info
+    } else {
+      return '不好意思，咨询数据过大，请稍后咨询哦 ฅʕ•̫͡•ʔฅ'
     }
   }
 }
